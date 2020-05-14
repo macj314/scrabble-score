@@ -19,7 +19,7 @@ namespace ScrabbleScore.Tests
     public void GetScore_ReturnsIntThatGoesThroughEachPossibleStringCase_Int()
     {
       int result = Score.GetScore("qJKFBDA");
-      Assert.AreEqual(27, result);
+      Assert.AreEqual(33, result);
     }
   }
 }
