@@ -1,9 +1,11 @@
-using System.Linq;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 namespace ScrabbleScore.Models
 {
   public class Score
   {
+    
     // input.ToLower().Count(i => i == 'x') == input.ToLower().Count(i => i == 'o');
     public static int GetScoreLinq(string input)
     {
@@ -19,7 +21,8 @@ namespace ScrabbleScore.Models
       result += input.Count(c => c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'l' || c == 'n' || c == 'n' || c == 'r' || c == 's' || c == 't');
       return result;
     }
-        public static int GetScoreIf(string input)
+    
+    public static int GetScoreIf(string input)
     {
       int result = 0;
       input = input.Trim('.', '?', '!', ' ', ';', ':', ',');
@@ -49,6 +52,31 @@ namespace ScrabbleScore.Models
           result += 1;
         }
       }
+      return result;
+    }
+
+    public static int GetScoreLambda(string input)
+    {
+      int result = 0;
+      Dictionary<int, char[]> findChar = new Dictionary<int, char[]>
+      {
+        {10, new char[]{'q', 'z'}},
+        {8, new char[]{'j', 'x'}},
+        {5, new char[]{'k'}},
+        {4, new char[]{'f', 'h', 'v', 'w', 'y'}},
+        {3, new char[]{'b', 'c', 'm', 'p'}},
+        {2, new char[]{'d', 'g'}},
+        {1, new char[]{'a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'}},
+      };
+      input = input.Trim('.', '?', '!', ' ', ';', ':', ',');
+      input = input.ToLower();
+
+
+      /*Func<int, bool> equalsFive = x => x == 5;
+      bool result = equalsFive(4);
+      Console.WriteLine(result); */
+      // Func<string x, Dictionary y>
+      
       return result;
     }
   }
